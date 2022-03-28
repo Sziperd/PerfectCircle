@@ -9,6 +9,7 @@ import UIKit
 
 class CanvasMainViewController: UIViewController {
 
+    @IBOutlet weak var ScoreText: UITextField!
     var cgView: StrokeCGView!
     @IBOutlet var leftRingControl: RingControl!
     @IBOutlet var leftRingControlHeight: NSLayoutConstraint!
@@ -25,11 +26,19 @@ class CanvasMainViewController: UIViewController {
 
     var strokeCollection = StrokeCollection()
     var canvasContainerView: CanvasContainerView!
+   
 
     /// Prepare the drawing canvas.
     /// - Tag: CanvasMainViewController-viewDidLoad
     override func viewDidLoad() {
+//        let defaults = UserDefaults.standard
+//        let Score = defaults.double(forKey: "Score")
+//        print(Score)
+//        ScoreText.text = "\(Score)"
         super.viewDidLoad()
+       
+        
+        
         let screenBounds = UIScreen.main.bounds
         let maxScreenDimension = max(screenBounds.width, screenBounds.height)
 
@@ -69,6 +78,7 @@ class CanvasMainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         scrollView.flashScrollIndicators()
+        
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -113,19 +123,43 @@ class CanvasMainViewController: UIViewController {
     
     func receivedAllUpdatesForStroke(_ stroke: Stroke) {
         cgView.setNeedsDisplay(for: stroke)
+        
+      
+        
         stroke.clearUpdateInfo()
     }
 
+    func clearCircle(){
+        self.strokeCollection = StrokeCollection()
+        cgView.strokeCollection = self.strokeCollection
+    }
+    
     @IBAction func clearButtonAction(_ sender: AnyObject) {
         self.strokeCollection = StrokeCollection()
         cgView.strokeCollection = self.strokeCollection
     }
-
+ 
     /// Handles the gesture for `StrokeGestureRecognizer`.
     /// - Tag: strokeUpdate
+    ///
+    ///
+    ///
+
     @objc
     func strokeUpdated(_ strokeGesture: StrokeGestureRecognizer) {
+        if (isFinished == true){
+            clearCircle()
+            self.pencilMode = true
+            self.pencilMode = false
+            isFinished = false
+        }
+       
         
+        let y = Double(round(100 * scoreString) / 1000)
+        
+        ScoreText.text = "\(y)%"
+       // ScoreText.text = "\(MyVariables.scoreString)"
+      //  print(scoreString)
         if strokeGesture === pencilStrokeRecognizer {
             lastSeenPencilInteraction = Date()
         }
@@ -236,6 +270,10 @@ extension CanvasMainViewController: UIGestureRecognizerDelegate {
         
     }
 
+    
+    
+
+    
     // We want the pencil to recognize simultaniously with all others.
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                            shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {

@@ -146,6 +146,7 @@ class StrokeCGView: UIView {
             view.layer.borderWidth = 0.5
             view.isUserInteractionEnabled = false
             view.isHidden = true
+           // view.center
             self.addSubview(view)
             return view
         }
@@ -240,6 +241,10 @@ private extension StrokeCGView {
         } else {
             for segment in stroke {
                 draw(segment: segment, in: context)
+                
+                
+//                                    
+                
             }
         }
 
