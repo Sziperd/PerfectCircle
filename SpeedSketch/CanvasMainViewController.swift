@@ -137,6 +137,18 @@ class CanvasMainViewController: UIViewController {
     @IBAction func clearButtonAction(_ sender: AnyObject) {
         self.strokeCollection = StrokeCollection()
         cgView.strokeCollection = self.strokeCollection
+        
+        
+        let result = returnMultipleValues()
+            lastAngle = result.lastAngle
+            lastRadius = result.lastRadius
+            angleChange = result.angleChange
+            angleTotal = result.angleTotal
+            saveLastAngle = result.saveLastAngle
+            saveLastRadius = result.saveLastRadius
+            accuracyTotal = result.accuracyTotal
+            directionStart = result.directionStart
+            radiusCorrect = result.radiusCorrect
     }
  
     /// Handles the gesture for `StrokeGestureRecognizer`.
@@ -146,20 +158,12 @@ class CanvasMainViewController: UIViewController {
     ///
 
     
-    public func zeroItAllOut(lastAngle: Double, lastRadius: Double, angleChange: Double, angleTotal: Double){
+  
         
-        var lastAngle = 0.0
-        var lastRadius = 0.0
-        var angleChange = 0.0
-        var angleTotal = 0.0
-        
-      
-    }
-        
-    public func returnMultipleValues() -> (lastAngle: Double, lastRadius: Double, angleChange: Double, angleTotal: Double, saveLastAngle: Double, saveLastRadius: Double, accuracyTotal: Double, directionStart: Int)? {
+    public func returnMultipleValues() -> (lastAngle: Double, lastRadius: Double, angleChange: Double, angleTotal: Double, saveLastAngle: Double, saveLastRadius: Double, accuracyTotal: Double, directionStart: Int, radiusCorrect: Double, accuracy: Double) {
        
         
-        return (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0)
+        return (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0.0)
     }
     @objc
     func strokeUpdated(_ strokeGesture: StrokeGestureRecognizer) {
@@ -167,36 +171,20 @@ class CanvasMainViewController: UIViewController {
             clearCircle()
             self.pencilMode = true
             self.pencilMode = false
-           // zeroItAllOut(lastAngle: lastAngle, lastRadius: lastRadius, angleChange: angleChange, angleTotal: angleTotal)
+       
             
             
-            if let result = returnMultipleValues(){
+            let result = returnMultipleValues()
                 lastAngle = result.lastAngle
-            lastRadius = result.lastRadius
-            angleChange = result.angleChange
-            angleTotal = result.angleTotal
+                lastRadius = result.lastRadius
+                angleChange = result.angleChange
+                angleTotal = result.angleTotal
                 saveLastAngle = result.saveLastAngle
                 saveLastRadius = result.saveLastRadius
                 accuracyTotal = result.accuracyTotal
                 directionStart = result.directionStart
-                
-            }
-            
-            //canvasContainerView.zeroItAllOut(lastAngle: lastAngle, lastRadius: lastRadius, angleChange: angleChange, angleTotal: angleTotal)
-            //zeroItAllOut(lastAngle: lastAngle, lastRadius: lastRadius, angleChange: angleChange, angleTotal: angleTotal)
-//            lastAngle = 0.0 git
-//            lastRadius = 0.0 gi
-//
-//            angleChange = 0.0 git
-//            saveLastAngle = 0.0 git
-//            saveLastRadius = 0.0 git
-//           // accuracy = 0.0
-//            accuracyTotal = 0.0 git
-//            //direction = 0
-//            directionStart = 0
-//            radiusCorrect = 1.0
-//            angleTotal = 0.0 git
-            
+                radiusCorrect = result.radiusCorrect
+      
             isFinished = false
         }
        

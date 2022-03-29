@@ -44,7 +44,17 @@ class CanvasContainerView: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-      
+                let result = returnMultipleValues()
+                    lastAngle = result.lastAngle
+                    lastRadius = result.lastRadius
+                    angleChange = result.angleChange
+                    angleTotal = result.angleTotal
+                    saveLastAngle = result.saveLastAngle
+                    saveLastRadius = result.saveLastRadius
+                    accuracyTotal = result.accuracyTotal
+                    directionStart = result.directionStart
+                    radiusCorrect = result.radiusCorrect
+        
         var directionStart = 0
         var highscore = 0.0
        // var timeLimit = 0.0
@@ -87,22 +97,39 @@ class CanvasContainerView: UIView {
         //direction = (angleChange < 0) ? -1 : 1
         directionStart = direction
 
-        if (angleTotal == 360){
-            print("360 degrees obtained, restart")
-            if let result = returnMultipleValues(){
-                lastAngle = result.lastAngle
-            lastRadius = result.lastRadius
-            angleChange = result.angleChange
-            angleTotal = result.angleTotal
-                saveLastAngle = result.saveLastAngle
-                saveLastRadius = result.saveLastRadius
-                accuracyTotal = result.accuracyTotal
-                directionStart = result.directionStart
-                
-            }
-            
-            isFinished = true
-        }
+// if (angleTotal == 360){
+//        print("360 degrees obtained, restart")
+//
+//
+//
+//        let result = returnMultipleValues()
+//            lastAngle = result.lastAngle
+//            lastRadius = result.lastRadius
+//            angleChange = result.angleChange
+//            angleTotal = result.angleTotal
+//            saveLastAngle = result.saveLastAngle
+//            saveLastRadius = result.saveLastRadius
+//            accuracyTotal = result.accuracyTotal
+//            directionStart = result.directionStart
+//            radiusCorrect = result.radiusCorrect
+//        //accuracy = result.accuracy
+//
+//        print(lastAngle)
+//        print(lastRadius)
+//
+//        print(angleChange)
+//        print(saveLastAngle)
+//        print(saveLastRadius)
+//       // print(accuracy)
+//        print(accuracyTotal)
+//        print(direction)
+//        print(directionStart)
+//        print(radiusCorrect)
+//        print(angleTotal)
+//
+//
+//        isFinished = true
+//    }
         
         
     }
@@ -180,35 +207,13 @@ class CanvasContainerView: UIView {
            
             scoreString = round(1000 * accuracyTotal / angleTotal)
         
-                   print(lastAngle)
-                   print(lastRadius)
-        
-                   print(angleChange)
-                   print(saveLastAngle)
-                   print(saveLastRadius)
-                   print(accuracy)
-                   print(accuracyTotal)
-                   print(direction)
-                   print(directionStart)
-                   print(radiusCorrect)
-                   print(angleTotal)
-        
+                  
         
         if (angleTotal == 360){
             print("360 degrees obtained, restart")
-            if let result = returnMultipleValues(){
-                lastAngle = result.lastAngle
-            lastRadius = result.lastRadius
-            angleChange = result.angleChange
-            angleTotal = result.angleTotal
-                saveLastAngle = result.saveLastAngle
-                saveLastRadius = result.saveLastRadius
-                accuracyTotal = result.accuracyTotal
-                directionStart = result.directionStart
-                
-            }
-            
             isFinished = true
+  
+            
         }
 
     }
@@ -216,11 +221,12 @@ class CanvasContainerView: UIView {
     
     
     
-    public func returnMultipleValues() -> (lastAngle: Double, lastRadius: Double, angleChange: Double, angleTotal: Double, saveLastAngle: Double, saveLastRadius: Double, accuracyTotal: Double, directionStart: Int)? {
+    public func returnMultipleValues() -> (lastAngle: Double, lastRadius: Double, angleChange: Double, angleTotal: Double, saveLastAngle: Double, saveLastRadius: Double, accuracyTotal: Double, directionStart: Int, radiusCorrect: Double, accuracy: Double) {
        
         
-        return (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0)
+        return (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0.0)
     }
+    
     func Accuracyy(angleChange: Double, accuracy: Double, accuracyTotal: Double) -> Double {
         var sum2 = (angleChange * accuracy) + accuracyTotal
         
