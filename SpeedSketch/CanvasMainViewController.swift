@@ -149,6 +149,7 @@ class CanvasMainViewController: UIViewController {
             accuracyTotal = result.accuracyTotal
             directionStart = result.directionStart
             radiusCorrect = result.radiusCorrect
+           
     }
  
     /// Handles the gesture for `StrokeGestureRecognizer`.
@@ -184,7 +185,7 @@ class CanvasMainViewController: UIViewController {
                 accuracyTotal = result.accuracyTotal
                 directionStart = result.directionStart
                 radiusCorrect = result.radiusCorrect
-      
+               
             isFinished = false
         }
        

@@ -54,8 +54,8 @@ class CanvasContainerView: UIView {
                     accuracyTotal = result.accuracyTotal
                     directionStart = result.directionStart
                     radiusCorrect = result.radiusCorrect
-        
-        var directionStart = 0
+                    //direction = result.direction
+       directionStart = 0
         var highscore = 0.0
        // var timeLimit = 0.0
      
@@ -83,54 +83,21 @@ class CanvasContainerView: UIView {
         
         radiusCorrect = saveLastRadius
         
+        if (radiusCorrect < 50){
+            print("starting point too close to middle")
+            isFinished = true
+            
+        }
+        
+        
         saveLastX = location.x
         saveLastY = location.y
         
-      //angleChange =  lastAngle - saveLastAngle
-        //angleChange = abs(angleChange)
-//        if (angleChange < -180) {
-//                   angleChange += 360;
-//               } else if (angleChange > 180) {
-//                   angleChange -= 360;
-//               }
 
         //direction = (angleChange < 0) ? -1 : 1
-        directionStart = direction
+       // directionStart = 0
 
-// if (angleTotal == 360){
-//        print("360 degrees obtained, restart")
-//
-//
-//
-//        let result = returnMultipleValues()
-//            lastAngle = result.lastAngle
-//            lastRadius = result.lastRadius
-//            angleChange = result.angleChange
-//            angleTotal = result.angleTotal
-//            saveLastAngle = result.saveLastAngle
-//            saveLastRadius = result.saveLastRadius
-//            accuracyTotal = result.accuracyTotal
-//            directionStart = result.directionStart
-//            radiusCorrect = result.radiusCorrect
-//        //accuracy = result.accuracy
-//
-//        print(lastAngle)
-//        print(lastRadius)
-//
-//        print(angleChange)
-//        print(saveLastAngle)
-//        print(saveLastRadius)
-//       // print(accuracy)
-//        print(accuracyTotal)
-//        print(direction)
-//        print(directionStart)
-//        print(radiusCorrect)
-//        print(angleTotal)
-//
-//
-//        isFinished = true
-//    }
-        
+
         
     }
     
@@ -161,7 +128,7 @@ class CanvasContainerView: UIView {
             print("TIME'S UP. Youve been drawing for too long")
             isFinished = true
             
-            
+    
         }
         
         
@@ -173,15 +140,36 @@ class CanvasContainerView: UIView {
                } else if (angleChange > 180) {
                    angleChange -= 360
                }
-        direction = (angleChange < 0) ? -1 : 1
-        // tutaj dodaj wylaczanie gry kiedy zmieni sie direction
-   
+        
+        
+        
+//         direction = (angleChange < 0) ? -1 : 1
+//        
+//        print(direction)
+//        print(directionStart)
+//        if (directionStart == 0) {
+//            directionStart = direction
+//                   if (abs(angleChange) < 0.1) {
+//                     //isFinished = true
+//                   }
+//                   
+//               }
+//        print(directionStart)
+//        // tutaj dodaj wylaczanie gry kiedy zmieni sie direction
+//        
+//        if (direction != directionStart){
+//            print("Dont change directions!")
+//            isFinished = true
+//            
+//        }
+        
+        
          lastRadius = sqrt(pow(location.x - xCenter, 2) + pow(location.y - yCenter, 2))
         var accuracy = 1 - abs((lastRadius + saveLastRadius) / 2 - radiusCorrect) / radiusCorrect
         accuracy = max(accuracy,0)
         
       
-        if (lastRadius < 10){
+        if (lastRadius < 30){
             print("Too close to the middle!")
             print("game should restart")
             isFinished = true
