@@ -260,14 +260,20 @@ class CanvasMainViewController: UIViewController {
         
         let z = Double(round(10000 * highscore) / 100)
         let y = Double(round(100 * scoreString) / 1000)
+        let defaults = UserDefaults.standard
       //  ScoreText.backgroundColor = UIColor.white
        if (highscore == 0){
            highScoreText.isHidden = true
            TopHiScoText.isHidden = true
+           if (defaults.double(forKey: "Highscore") != nil){
+               highscore = defaults.double(forKey: "Highscore")
+           }
+           //defaults.set(highscore, forKey: "Highscore")
            
        }else{
            highScoreText.isHidden = false
            TopHiScoText.isHidden = false
+           defaults.set(highscore, forKey: "Highscore")
        }
         
         ScoreText.text = "\(y)%"
