@@ -9,6 +9,10 @@ import UIKit
 
 class CanvasMainViewController: UIViewController {
 
+    
+    
+    @IBOutlet weak var TopHiScoText: UILabel!
+    @IBOutlet weak var highScoreText: UITextField!
     @IBOutlet weak var ScoreText: UITextField!
     var cgView: StrokeCGView!
     @IBOutlet var leftRingControl: RingControl!
@@ -24,6 +28,9 @@ class CanvasMainViewController: UIViewController {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var separatorView: UIView!
 
+    
+    
+    @IBOutlet weak var againButton: UIButton!
     var strokeCollection = StrokeCollection()
     var canvasContainerView: CanvasContainerView!
    
@@ -36,9 +43,22 @@ class CanvasMainViewController: UIViewController {
 //        print(Score)
 //        ScoreText.text = "\(Score)"
         super.viewDidLoad()
+        if (highscore == 0){
+            highScoreText.isHidden = true
+            TopHiScoText.isHidden = true
+            
+        }else{
+            highScoreText.isHidden = false
+            TopHiScoText.isHidden = false
+        }
+        
+        againButton.layer.cornerRadius = 20
        
-        
-        
+        highScoreText.borderStyle = .none
+        highScoreText.backgroundColor = UIColor.clear
+       ScoreText.borderStyle = .none
+       
+        ScoreText.backgroundColor = UIColor.clear
         let screenBounds = UIScreen.main.bounds
         let maxScreenDimension = max(screenBounds.width, screenBounds.height)
 
@@ -77,7 +97,11 @@ class CanvasMainViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+       
         scrollView.flashScrollIndicators()
+        
+        
         
     }
     
@@ -128,10 +152,53 @@ class CanvasMainViewController: UIViewController {
         
         stroke.clearUpdateInfo()
     }
+    
+    func hideAgainButton(){
+        againButton.isHidden = true
+        isFinished = false
+//        if fingerStrokeRecognizer.view == nil {
+//            scrollView.addGestureRecognizer(fingerStrokeRecognizer)
+//        }
+        //self.pencilMode = false
+    }
+    
+    func showAgainButton(){
+        againButton.isHidden = false
+        isFinished = true
+//        if let view = fingerStrokeRecognizer.view {
+//            view.removeGestureRecognizer(fingerStrokeRecognizer)
+//        }
+       // self.pencilMode = true
+    }
+    
+    @IBAction func againButtonTapped(_ sender: UIButton) {
+        //isFinished = false
+        clearCircle()
+        hideAgainButton()
+        
+   
+      //  touch.view.isUserInteractionEnabled = false
+        
+        let result = returnMultipleValues()
+            lastAngle = result.lastAngle
+            lastRadius = result.lastRadius
+            angleChange = result.angleChange
+            angleTotal = result.angleTotal
+            saveLastAngle = result.saveLastAngle
+            saveLastRadius = result.saveLastRadius
+            accuracyTotal = result.accuracyTotal
+            directionStart = result.directionStart
+            radiusCorrect = result.radiusCorrect
+   
+    }
+    
 
     func clearCircle(){
         self.strokeCollection = StrokeCollection()
         cgView.strokeCollection = self.strokeCollection
+        
+        
+        
     }
     
     @IBAction func clearButtonAction(_ sender: AnyObject) {
@@ -150,6 +217,8 @@ class CanvasMainViewController: UIViewController {
             directionStart = result.directionStart
             radiusCorrect = result.radiusCorrect
            
+      //  self.isUserInteractionEnabled = true
+       
     }
  
     /// Handles the gesture for `StrokeGestureRecognizer`.
@@ -169,30 +238,40 @@ class CanvasMainViewController: UIViewController {
     @objc
     func strokeUpdated(_ strokeGesture: StrokeGestureRecognizer) {
         if (isFinished == true){
-            clearCircle()
-            self.pencilMode = true
-            self.pencilMode = false
+            //clearCircle()
+           // self.isUserInteractionEnabled = false
        
             
+//            if let view = fingerStrokeRecognizer.view {
+//                view.removeGestureRecognizer(fingerStrokeRecognizer)
+//            }
+            //fingerStrokeRecognizer.isEnabled = false
             
-            let result = returnMultipleValues()
-                lastAngle = result.lastAngle
-                lastRadius = result.lastRadius
-                angleChange = result.angleChange
-                angleTotal = result.angleTotal
-                saveLastAngle = result.saveLastAngle
-                saveLastRadius = result.saveLastRadius
-                accuracyTotal = result.accuracyTotal
-                directionStart = result.directionStart
-                radiusCorrect = result.radiusCorrect
-               
-            isFinished = false
+            strokeGesture.state = .ended
+            //fingerStrokeRecognizer.isEnabled = false
+            
+            showAgainButton()
+            //isFinished = false
         }
        
+        self.scrollView.isScrollEnabled = false
+        scrollView.pinchGestureRecognizer?.isEnabled = false
+        scrollView.panGestureRecognizer.isEnabled = false
         
+        let z = Double(round(10000 * highscore) / 100)
         let y = Double(round(100 * scoreString) / 1000)
+      //  ScoreText.backgroundColor = UIColor.white
+       if (highscore == 0){
+           highScoreText.isHidden = true
+           TopHiScoText.isHidden = true
+           
+       }else{
+           highScoreText.isHidden = false
+           TopHiScoText.isHidden = false
+       }
         
         ScoreText.text = "\(y)%"
+        highScoreText.text = "\(z)%"
        // ScoreText.text = "\(MyVariables.scoreString)"
       //  print(scoreString)
         if strokeGesture === pencilStrokeRecognizer {
@@ -270,13 +349,13 @@ class CanvasMainViewController: UIViewController {
     var pencilMode = false {
         didSet {
             if pencilMode {
-                scrollView.panGestureRecognizer.minimumNumberOfTouches = 1
+                scrollView.panGestureRecognizer.minimumNumberOfTouches = 5
                 pencilButton.isHidden = false
                 if let view = fingerStrokeRecognizer.view {
                     view.removeGestureRecognizer(fingerStrokeRecognizer)
                 }
             } else {
-                scrollView.panGestureRecognizer.minimumNumberOfTouches = 2
+                scrollView.panGestureRecognizer.minimumNumberOfTouches = 5
                 pencilButton.isHidden = true
                 if fingerStrokeRecognizer.view == nil {
                     scrollView.addGestureRecognizer(fingerStrokeRecognizer)

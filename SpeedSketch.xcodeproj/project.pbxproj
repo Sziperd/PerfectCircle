@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6868CBAE219092F800A74FC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6868CBAD219092F800A74FC8 /* Main.storyboard */; };
+		CB44C32F27F9F5BA003547C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6868CBAD219092F800A74FC8 /* Main.storyboard */; };
 		F224161F1D04337E003EB080 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F224161E1D04337E003EB080 /* RingView.swift */; };
 		F2B07F471CED5DC300B03432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D0CD921CDD78CC0097775C /* AppDelegate.swift */; };
-		F2B07F481CED5DC600B03432 /* CanvasMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D0CD941CDD78CC0097775C /* CanvasMainViewController.swift */; };
+		F2B07F481CED5DC600B03432 /* CanvasMainViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D0CD941CDD78CC0097775C /* CanvasMainViewController1.swift */; };
 		F2B07F491CED5DC900B03432 /* CGDrawingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280FF8E1CE04D1F00CF8D37 /* CGDrawingEngine.swift */; };
 		F2B35B191CFCE5960014550C /* CanvasContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B35B181CFCE5960014550C /* CanvasContainerView.swift */; };
 		F2C4FBAF1CEE9E4600F3A052 /* RingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4FBAE1CEE9E4600F3A052 /* RingControl.swift */; };
@@ -32,7 +32,7 @@
 		F2C4FBAE1CEE9E4600F3A052 /* RingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingControl.swift; sourceTree = "<group>"; };
 		F2D0CD8F1CDD78CC0097775C /* SpeedSketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedSketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D0CD921CDD78CC0097775C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F2D0CD941CDD78CC0097775C /* CanvasMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasMainViewController.swift; sourceTree = "<group>"; };
+		F2D0CD941CDD78CC0097775C /* CanvasMainViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasMainViewController1.swift; sourceTree = "<group>"; };
 		F2D0CD991CDD78CC0097775C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2D0CD9C1CDD78CC0097775C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2D0CD9E1CDD78CC0097775C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				F2D0CD921CDD78CC0097775C /* AppDelegate.swift */,
-				F2D0CD941CDD78CC0097775C /* CanvasMainViewController.swift */,
+				F2D0CD941CDD78CC0097775C /* CanvasMainViewController1.swift */,
 				F2B35B181CFCE5960014550C /* CanvasContainerView.swift */,
 				6868CBAD219092F800A74FC8 /* Main.storyboard */,
 				F2E932E51CEF870B00B1238F /* Controls */,
@@ -200,7 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6868CBAE219092F800A74FC8 /* Main.storyboard in Resources */,
+				CB44C32F27F9F5BA003547C8 /* Main.storyboard in Resources */,
 				F2D0CD9D1CDD78CC0097775C /* LaunchScreen.storyboard in Resources */,
 				F2D0CD9A1CDD78CC0097775C /* Assets.xcassets in Resources */,
 			);
@@ -215,7 +215,7 @@
 			files = (
 				F224161F1D04337E003EB080 /* RingView.swift in Sources */,
 				F2B07F471CED5DC300B03432 /* AppDelegate.swift in Sources */,
-				F2B07F481CED5DC600B03432 /* CanvasMainViewController.swift in Sources */,
+				F2B07F481CED5DC600B03432 /* CanvasMainViewController1.swift in Sources */,
 				F2DE48981D022A7200C9E0DC /* CGMathExtensions.swift in Sources */,
 				F2B07F491CED5DC900B03432 /* CGDrawingEngine.swift in Sources */,
 				F2D0CDA91CDD9C5F0097775C /* StrokeCollection.swift in Sources */,

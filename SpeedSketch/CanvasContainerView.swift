@@ -35,14 +35,19 @@ public var angleChange = 0.0
 
 public var isFinished = false
 
+
+public var highscore = 0.0
+
 // var saveLastScore = 0.0
 class CanvasContainerView: UIView {
-    
  
-
  
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
+        
+
         
                 let result = returnMultipleValues()
                     lastAngle = result.lastAngle
@@ -56,7 +61,7 @@ class CanvasContainerView: UIView {
                     radiusCorrect = result.radiusCorrect
                     //direction = result.direction
        directionStart = 0
-        var highscore = 0.0
+       // var highscore = 0.0
        // var timeLimit = 0.0
      
     
@@ -73,8 +78,8 @@ class CanvasContainerView: UIView {
       
         let touch = touches.first!
         let location = touch.location(in: documentView)
-       // let canvasCenter = CGPoint(x: (frame.width) / 2.0, y: (frame.height) / 2.0)
-        let canvasCenter = CGPoint(x: 468  , y: 392 )
+       // let canvasCenter = CGPoint(x: frame.midX , y: frame.midY)
+       let canvasCenter = CGPoint(x: 468  , y: 485 )
         let xCenter = canvasCenter.x
         let yCenter = canvasCenter.y
        
@@ -102,12 +107,9 @@ class CanvasContainerView: UIView {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-   
-       // var angleTotal = 0.0
-        //var accuracyTotal = 0.0
-       // var directionStart = 0
-        
-        var highscore = 0.0
+       
+       
+        //var highscore = 0.0
         
         
         let dateFormatter: DateFormatter = DateFormatter()
@@ -117,8 +119,8 @@ class CanvasContainerView: UIView {
         let currentT = Date() //UTC
         let touch = touches.first!
         let location = touch.location(in: documentView)
-       // let canvasCenter = CGPoint(x: (frame.width) / 2.0, y: (frame.height) / 2.0)
-        let canvasCenter = CGPoint(x: 468  , y: 392 )
+        //let canvasCenter = CGPoint(x: self.view.center.x , y: self.view.center.y)
+       let canvasCenter = CGPoint(x: 468  , y: 485 )
        
         let xCenter = canvasCenter.x
         let yCenter = canvasCenter.y
@@ -144,7 +146,7 @@ class CanvasContainerView: UIView {
         
         
 //         direction = (angleChange < 0) ? -1 : 1
-//        
+//
 //        print(direction)
 //        print(directionStart)
 //        if (directionStart == 0) {
@@ -152,15 +154,15 @@ class CanvasContainerView: UIView {
 //                   if (abs(angleChange) < 0.1) {
 //                     //isFinished = true
 //                   }
-//                   
+//
 //               }
 //        print(directionStart)
 //        // tutaj dodaj wylaczanie gry kiedy zmieni sie direction
-//        
+//
 //        if (direction != directionStart){
 //            print("Dont change directions!")
 //            isFinished = true
-//            
+//
 //        }
         
         
@@ -200,8 +202,15 @@ class CanvasContainerView: UIView {
         if (angleTotal == 360){
             print("360 degrees obtained, restart")
             isFinished = true
-  
-            
+            if (round(1000 * accuracyTotal / angleTotal) > round(1000 * highscore)) {
+                if (highscore == 0) {
+                                  
+                                  highscore = accuracyTotal / angleTotal;
+                                 
+                              }
+                              highscore = accuracyTotal / angleTotal;
+                
+            }
         }
 
     }
@@ -270,11 +279,13 @@ class CanvasContainerView: UIView {
         canvasView.layer.shadowOpacity = 1.0
         
         
+       
         
      
         super.init(frame: frame)
         self.backgroundColor = UIColor.lightGray
         self.addSubview(canvasView)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
