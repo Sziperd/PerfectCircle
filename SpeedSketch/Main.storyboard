@@ -156,6 +156,21 @@
             </objects>
             <point key="canvasLocation" x="1080.8" y="55.322338830584712"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="SsN-W5-qt9">
+            <objects>
+                <viewController id="a3F-Aq-8sk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kxP-QM-lX5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="DHf-hW-xKH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aBb-Rk-gm7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-734" y="-255"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="XMh-mk-PHw">
             <objects>
@@ -182,6 +197,9 @@
         <image name="Close" width="28" height="28"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
