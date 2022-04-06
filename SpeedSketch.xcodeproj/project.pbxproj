@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB44C32F27F9F5BA003547C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6868CBAD219092F800A74FC8 /* Main.storyboard */; };
+		CBDD26BC27FE48270093DA5E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDD26BB27FE48270093DA5E /* MenuViewController.swift */; };
 		F224161F1D04337E003EB080 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F224161E1D04337E003EB080 /* RingView.swift */; };
 		F2B07F471CED5DC300B03432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D0CD921CDD78CC0097775C /* AppDelegate.swift */; };
 		F2B07F481CED5DC600B03432 /* CanvasMainViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D0CD941CDD78CC0097775C /* CanvasMainViewController1.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		07A45EBC4F0F61216BE20E65 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		6868CBAD219092F800A74FC8 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CBDD26BB27FE48270093DA5E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CF40806974A28F967E490099 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		F214544C1CFB4E23003F77B0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F224161E1D04337E003EB080 /* RingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				F2D0CD921CDD78CC0097775C /* AppDelegate.swift */,
 				F2D0CD941CDD78CC0097775C /* CanvasMainViewController1.swift */,
 				F2B35B181CFCE5960014550C /* CanvasContainerView.swift */,
+				CBDD26BB27FE48270093DA5E /* MenuViewController.swift */,
 				6868CBAD219092F800A74FC8 /* Main.storyboard */,
 				F2E932E51CEF870B00B1238F /* Controls */,
 				F280FF901CE04D5300CF8D37 /* Drawing Engine */,
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F224161F1D04337E003EB080 /* RingView.swift in Sources */,
+				CBDD26BC27FE48270093DA5E /* MenuViewController.swift in Sources */,
 				F2B07F471CED5DC300B03432 /* AppDelegate.swift in Sources */,
 				F2B07F481CED5DC600B03432 /* CanvasMainViewController1.swift in Sources */,
 				F2DE48981D022A7200C9E0DC /* CGMathExtensions.swift in Sources */,
