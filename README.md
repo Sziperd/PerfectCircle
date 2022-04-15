@@ -14,4 +14,4 @@ The game wants you to draw a perfect circle on the screen of your phone. It will
 
 Game is based on Apple's drawing engine called "Leveraging Touch Input for Drawing Apps". Rest of the logic is implemented by me.
 
-![Game](https://github.com/Sziperd/PerfectCircle/blob/main/ezgif-2-669b23097b.gif?raw=true)
+![Game](https://github.com/Sziperd/PerfectCircle/blob/main/ezgif-2-cb05d76355.gif?raw=true)
